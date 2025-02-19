@@ -6,20 +6,21 @@ const initialGameBoard = [
   [null, null, null],//c
 ];
 
-export default function GameBoard() {
+export default function GameBoard({onSelectSquare, activePlayerSymbol}) {
 const [gameBoard, setGameBoard] = useState(initialGameBoard);
 
 function handleSelectSquare(rowIndex, colIndex){
     setGameBoard((prevGameBoard) =>{
         const updatedBoard = [...prevGameBoard.map(innerArray => [...innerArray])]
-        updatedBoard[rowIndex][colIndex] = 'X'
+        updatedBoard[rowIndex][colIndex] = activePlayerSymbol
         return updatedBoard;
     } );
-    
-    
+    onSelectSquare();
+
     //To rowIndex to theloume gia na jeroume poio row exei dialextei poio array stin ousia , to a to b H to c ////// Kai to colIndex to theloume etsi wste na xeroume poio null akribws tha allaxtei, paradigma apo to array a to 2o null na ginei o H x analoga.
-    
 }
+
+
     
   return (
     //TO PRWTO OL EINAI TO CONTAINER
